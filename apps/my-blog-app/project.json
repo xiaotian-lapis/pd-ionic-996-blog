@@ -150,7 +150,7 @@
           "npx cap sync ios",
           "npx cap open ios"
         ],
-        "cwd": "apps/snowylive-app"
+        "cwd": "apps/my-blog-app"
       }
     },
     "run-android": {
@@ -160,7 +160,7 @@
           "npx cap sync android",
           "npx cap open android"
         ],
-        "cwd": "apps/snowylive-app"
+        "cwd": "apps/my-blog-app"
       }
     }
   }
