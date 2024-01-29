@@ -12,7 +12,7 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/apps/my-blog-app",
+        "outputPath": "apps/my-blog-app/dist/apps/my-blog-app",
         "index": "apps/my-blog-app/src/index.html",
         "browser": "apps/my-blog-app/src/main.ts",
         "polyfills": [
