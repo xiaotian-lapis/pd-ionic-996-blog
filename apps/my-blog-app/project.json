@@ -25,6 +25,9 @@
           "apps/my-blog-app/src/assets"
         ],
         "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "node_modules/leaflet/dist/leaflet.css",
+          "node_modules/font-awesome/css/font-awesome.css",
           "apps/my-blog-app/src/styles.scss",
           {
             "input": "node_modules/@ionic/angular/css/core.css"
