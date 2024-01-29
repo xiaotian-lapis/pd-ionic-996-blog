@@ -15,17 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pd-ionic/shared-constants": [
-        "libs/shared/constants/src/index.ts"
-      ],
-      "@pd-ionic/shared-models": [
-        "libs/shared/models/src/index.ts"
-      ],
-      "@pd-ionic/shared-services": [
-        "libs/shared/services/src/index.ts"
-      ],
+      "@pd-ionic/blog-service": ["libs/services/blog/src/index.ts"],
+      "@pd-ionic/blog-store": ["libs/stores/blog/src/index.ts"],
+      "@pd-ionic/profile-service": ["libs/services/profile/src/index.ts"],
+      "@pd-ionic/profile-store": ["libs/stores/profile/src/index.ts"],
+      "@pd-ionic/shared-constants": ["libs/shared/constants/src/index.ts"],
+      "@pd-ionic/shared-models": ["libs/shared/models/src/index.ts"],
+      "@pd-ionic/shared-services": ["libs/shared/services/src/index.ts"],
       "@pd-ionic/shared-ui": ["libs/shared/ui/src/index.ts"],
-      "@pd-ionic/utils": ["libs/shared/utils/src/index.ts"]
+      "@pd-ionic/shared-utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
