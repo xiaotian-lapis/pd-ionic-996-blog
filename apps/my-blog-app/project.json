@@ -8,19 +8,58 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/my-blog-app",
         "index": "apps/my-blog-app/src/index.html",
         "browser": "apps/my-blog-app/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/my-blog-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/my-blog-app/src/favicon.ico",
           "apps/my-blog-app/src/assets"
         ],
-        "styles": ["apps/my-blog-app/src/styles.scss"],
+        "styles": [
+          "apps/my-blog-app/src/styles.scss",
+          {
+            "input": "node_modules/@ionic/angular/css/core.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/normalize.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/structure.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/typography.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/display.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/padding.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/float-elements.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/text-alignment.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/text-transformation.css"
+          },
+          {
+            "input": "node_modules/@ionic/angular/css/flex-utils.css"
+          },
+          {
+            "input": "apps/my-blog-app/src/theme/variables.css"
+          }
+        ],
         "scripts": []
       },
       "configurations": {
@@ -67,13 +106,61 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "outputs": [
+        "{options.outputFile}"
+      ]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/my-blog-app/jest.config.ts"
+      }
+    },
+    "ionic-cordova-serve": {
+      "executor": "@ionic/angular-toolkit:cordova-serve",
+      "options": {
+        "cordovaBuildTarget": "my-blog-app:ionic-cordova-build",
+        "devServerTarget": "my-blog-app:serve"
+      },
+      "configurations": {
+        "production": {
+          "cordovaBuildTarget": "my-blog-app:ionic-cordova-build:production",
+          "devServerTarget": "my-blog-app:serve:production"
+        }
+      }
+    },
+    "ionic-cordova-build": {
+      "executor": "@ionic/angular-toolkit:cordova-build",
+      "options": {
+        "browserTarget": "my-blog-app:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "my-blog-app:build:production"
+        }
+      }
+    },
+    "run-ios": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx cap sync ios",
+          "npx cap open ios"
+        ],
+        "cwd": "apps/snowylive-app"
+      }
+    },
+    "run-android": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx cap sync android",
+          "npx cap open android"
+        ],
+        "cwd": "apps/snowylive-app"
       }
     }
   }
