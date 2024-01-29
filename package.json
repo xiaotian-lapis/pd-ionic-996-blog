@@ -2,7 +2,12 @@
   "name": "@pd-ionic/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve my-blog-app --configuration=$1",
+    "build": "nx build my-blog-app --configuration=$1",
+    "android": "npm run build && nx run my-blog-app:run-android",
+    "ios": "npm run build && nx run my-blog-app:run-ios"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.0.0",
@@ -11,13 +16,13 @@
     "@angular/compiler": "~17.0.0",
     "@angular/core": "~17.0.0",
     "@angular/forms": "~17.0.0",
-    "@angular/material": "^17.1.1",
     "@angular/platform-browser": "~17.0.0",
     "@angular/platform-browser-dynamic": "~17.0.0",
     "@angular/router": "~17.0.0",
     "@capacitor/android": "^5.6.0",
     "@capacitor/core": "^5.6.0",
     "@capacitor/ios": "^5.6.0",
+    "@fontsource/work-sans": "^5.0.16",
     "@ionic/angular": "^7.6.6",
     "@nx/angular": "17.2.8",
     "font-awesome": "^4.7.0",

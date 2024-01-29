@@ -1,0 +1,47 @@
+.header-toolbar {
+  border: none !important;
+  background: transparent !important;
+}
+
+.online-indicator-icon {
+  display: inline-block;
+  align-self: center;
+  width: 10px;
+  height: 10px;
+  margin: 0 10px 0 5px;
+  border-radius: 50%;
+
+  .blink {
+    display: block;
+    width: 10px;
+    height: 10px;
+    opacity: 0.7;
+    border-radius: 50%;
+    animation: blink 1s linear infinite;
+  }
+}
+
+.online-indicator-icon.offline {
+  background-color: var(--ion-color-danger);
+
+  .blink {
+    background-color: var(--ion-color-danger);
+  }
+}
+
+.online-indicator-icon.online {
+  background-color: var(--ion-color-success);
+
+  .blink {
+    background-color: var(--ion-color-success);
+  }
+}
+
+/*Animations*/
+
+@keyframes blink {
+  100% {
+    transform: scale(2, 2);
+    opacity: 0;
+  }
+}
