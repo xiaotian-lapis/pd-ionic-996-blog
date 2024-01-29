@@ -1,0 +1,54 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-demoamplifyblogapp-staging-20323-authRole",
+      "UnauthRoleArn": "arn:aws:iam::305461492709:role/amplify-demoamplifyblogapp-staging-20323-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::305461492709:role/amplify-demoamplifyblogapp-staging-20323-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-demoamplifyblogapp-staging-20323-deployment",
+      "UnauthRoleName": "amplify-demoamplifyblogapp-staging-20323-unauthRole",
+      "StackName": "amplify-demoamplifyblogapp-staging-20323",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:305461492709:stack/amplify-demoamplifyblogapp-staging-20323/1c223260-a913-11ee-92ff-0a7c7efd20db",
+      "AmplifyAppId": "d2r26gr0loqjl0",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-demoamplifyblogapp-staging-20323-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-demoamplifyblogapp-staging-20323-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "function": {
+        "blogsLambda": {
+          "deploymentBucketName": "amplify-demoamplifyblogapp-staging-20323-deployment",
+          "s3Key": "amplify-builds/blogsLambda-5337364e4d4b37584173-build.zip"
+        },
+        "profileLambda": {
+          "deploymentBucketName": "amplify-demoamplifyblogapp-staging-20323-deployment",
+          "s3Key": "amplify-builds/profileLambda-68536b503563304b464a-build.zip"
+        },
+        "AdminQueriesb09bf580": {
+          "deploymentBucketName": "amplify-demoamplifyblogapp-staging-20323-deployment",
+          "s3Key": "amplify-builds/AdminQueriesb09bf580-586a746f426772627368-build.zip"
+        },
+        "demoamplifyblogappCreateAuthChallenge": {
+          "deploymentBucketName": "amplify-demoamplifyblogapp-staging-20323-deployment",
+          "s3Key": "amplify-builds/demoamplifyblogappCreateAuthChallenge-724e4b32706d6f754478-build.zip"
+        },
+        "demoamplifyblogappDefineAuthChallenge": {
+          "deploymentBucketName": "amplify-demoamplifyblogapp-staging-20323-deployment",
+          "s3Key": "amplify-builds/demoamplifyblogappDefineAuthChallenge-6e796a58545870685663-build.zip"
+        },
+        "demoamplifyblogappVerifyAuthChallengeResponse": {
+          "RECAPTCHASECRET": "6LcD5UMpAAAAANAY6t4ydl6JQNANOT3u4kPFetZ1",
+          "deploymentBucketName": "amplify-demoamplifyblogapp-staging-20323-deployment",
+          "s3Key": "amplify-builds/demoamplifyblogappVerifyAuthChallengeResponse-734f364b4e524d52664a-build.zip"
+        }
+      },
+      "auth": {
+        "demoamplifyblogapp": {},
+        "userPoolGroups": {}
+      },
+      "api": {
+        "blogsApi": {},
+        "AdminQueries": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "paths": {
+    "/blogs": {
+      "name": "/blogs",
+      "lambdaFunction": "blogsLambda",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ]
+      }
+    },
+    "/profile": {
+      "name": "/profile",
+      "lambdaFunction": "profileLambda",
+      "permissions": {
+        "setting": "protected",
+        "auth": [
+          "create",
+          "read",
+          "update",
+          "delete"
+        ],
+        "guest": [
+          "read",
+          "update"
+        ]
+      }
+    }
+  }
+}

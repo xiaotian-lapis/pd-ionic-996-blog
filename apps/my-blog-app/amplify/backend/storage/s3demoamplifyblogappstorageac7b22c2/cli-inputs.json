@@ -1,0 +1,11 @@
+{
+  "resourceName": "s3demoamplifyblogappstorageac7b22c2",
+  "bucketName": "demo-amplify-blog-app-storage-ac7b22c2",
+  "policyUUID": "015dfc2b",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ]
+}
