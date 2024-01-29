@@ -1,0 +1,10 @@
+{
+  "projects": {
+    "app" : {
+      "name": "ionic-app",
+      "app_id": "",
+      "type": "angular",
+      "integrations": {}
+    }
+  }
+}
