@@ -1,1 +1,56 @@
-<p>home works!</p>
+<ion-content class="blog-list">
+  <div *ngIf="viewStatus$ | async as viewStatus">
+    <div *ngIf="equals(viewStatus, ViewStatus.Initial)">Initializing...</div>
+
+    <ion-spinner *ngIf="or(equals(viewStatus, ViewStatus.Loading), equals(viewStatus, ViewStatus.Reloading))" name="crescent"></ion-spinner>
+    <ion-text *ngIf="or(equals(viewStatus, ViewStatus.Loading), equals(viewStatus, ViewStatus.Reloading))">Fetching blogs from backend...</ion-text>
+
+    <div *ngIf="equals(viewStatus, ViewStatus.Failure)" class="error">
+      Error loading blogs
+    </div>
+
+    <ng-container *ngIf="equals(viewStatus, ViewStatus.Success)">
+      <div>
+        <ion-item>
+          <ion-label>Sort Blogs By</ion-label>
+          <ion-select (ionChange)="onSortFieldChange($event.detail.value)" [(ngModel)]="currentSortBy">
+            <ion-select-option *ngFor="let method of sortBy | keyvalue" [value]="method.value">
+              {{ method.value }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Sort Order</ion-label>
+          <ion-select (ionChange)="onSortOrderChange($event.detail.value)" [(ngModel)]="currentSortOrder">
+            <ion-select-option *ngFor="let order of sortOrder | keyvalue" [value]="order.value">
+              {{ order.value }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+      <ng-container *ngIf="blogList$ | async as blogs; else noBlogsTemplate">
+        <ng-container *ngFor="let blog of blogs">
+          <ion-card class="blog-item">
+            <ion-card-header>
+              <ion-card-title>{{ blog.title }}</ion-card-title>
+              <ion-card-subtitle>{{ blog.author }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <p>{{ blog.description }}</p>
+            </ion-card-content>
+            <ion-button color="primary" routerLink="/blog/view/{{ blog.id }}">View</ion-button>
+            <ion-button routerLink="/blog/edit/{{ blog.id }}">Edit</ion-button>
+            <ion-button (click)="deleteBlog(blog.id)" color="danger">Delete</ion-button>
+          </ion-card>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+</ion-content>
+
+<!-- Template for No Blogs -->
+<ng-template #noBlogsTemplate>
+  <div class="no-blogs">No blogs available.</div>
+</ng-template>
