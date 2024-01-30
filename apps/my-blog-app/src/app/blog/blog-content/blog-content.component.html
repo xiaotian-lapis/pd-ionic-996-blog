@@ -1,0 +1,28 @@
+<ion-content class="content-container">
+  <div class="content-title">
+    <h1>{{ title }}</h1>
+    <hr />
+  </div>
+
+  <ion-card class="content">
+    <ion-card-content>
+      <p>{{ blogContent }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list class="metadata">
+    <ion-item lines="none">
+      <ion-label>By: {{ blogAuthor }}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Published: {{ createdTime | date: 'dd/MM/yyyy HH:mm:ss' }}</ion-label>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Updated: {{ updatedTime | date: 'dd/MM/yyyy HH:mm:ss' }}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="button-group">
+    <ion-button (click)="goBack()">Go Back</ion-button>
+  </div>
+</ion-content>

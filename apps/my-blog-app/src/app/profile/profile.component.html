@@ -1,0 +1,41 @@
+<ion-content class="profile-form-container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="profileForm">
+    <ion-item>
+      <ion-label position="floating" for="name">Name:</ion-label>
+      <ion-input formControlName="name" id="name" type="text"></ion-input>
+    </ion-item>
+    <div *ngIf="profileForm.get('name')?.touched && profileForm.get('name')?.invalid">
+      <ion-text color="danger">
+        <small>Name is required.</small>
+      </ion-text>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating" for="email">Email:</ion-label>
+      <ion-input formControlName="email" id="email" type="email"></ion-input>
+    </ion-item>
+    <div *ngIf="profileForm.get('email')?.touched && profileForm.get('email')?.invalid">
+      <ion-text color="danger">
+        <small>Enter a valid email.</small>
+      </ion-text>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating" for="bio">Biography:</ion-label>
+      <ion-textarea formControlName="bio" id="bio"></ion-textarea>
+    </ion-item>
+
+    <ion-button [disabled]="!profileForm.valid" expand="block" type="submit">
+      Submit
+    </ion-button>
+  </form>
+
+  <hr />
+
+  <div class="last-edited">
+    <div *ngIf="profile$ | async as profile">
+      Last Edited: {{ profile?.updatedTime?? '' | date: 'dd/MM/yyyy HH:mm:ss' }}
+    </div>
+    <ion-button (click)="goBack()" expand="block">Go Back</ion-button>
+  </div>
+</ion-content>
