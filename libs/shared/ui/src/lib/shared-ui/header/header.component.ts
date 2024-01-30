@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
@@ -9,4 +9,11 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+
+  @Input()
+  title: string = "Hello";
+
+  @Input()
+  onSignOut: () => void = () => {console.log('onSignOut')};
+}

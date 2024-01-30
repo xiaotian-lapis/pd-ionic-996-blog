@@ -40,7 +40,8 @@
             "input": "apps/my-blog-app/src/theme/variables.css"
           },
           "node_modules/leaflet/dist/leaflet.css",
-          "node_modules/font-awesome/css/font-awesome.css"
+          "node_modules/font-awesome/css/font-awesome.css",
+          "node_modules/@aws-amplify/ui-angular/theme.css"
         ],
         "scripts": []
       },
