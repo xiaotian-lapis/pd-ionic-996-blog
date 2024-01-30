@@ -54,7 +54,6 @@ ion-toolbar {
   --background: var(--ion-color-primary);
   --color: var(--ion-color-primary-contrast);
   padding-top: env(safe-area-inset-top);
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .branding {
@@ -76,3 +75,9 @@ ion-toolbar {
 ion-refresher {
   margin-top: env(safe-area-inset-top);
 }
+
+.amplify-tabs {
+  margin-top: env(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+

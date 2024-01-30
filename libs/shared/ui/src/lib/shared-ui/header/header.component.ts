@@ -12,7 +12,7 @@ import { IonicModule } from '@ionic/angular';
 export class HeaderComponent {
 
   @Input()
-  title: string = "Hello";
+  title: string = " ";
 
   @Input()
   onSignOut: () => void = () => {console.log('onSignOut')};

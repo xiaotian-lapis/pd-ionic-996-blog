@@ -1,14 +1,22 @@
 <div *ngIf="flag">
   <div>Not passing Captcha!</div>
 </div>
+<pd-ionic-dummy-header [shouldShow]="shouldShowPlaceholder"></pd-ionic-dummy-header>
 <amplify-authenticator [formFields]="formFields" [services]="services">
+  <ng-template amplifySlot="sign-in-header">
+    <h3
+      class="amplify-heading"
+      style="padding: var(--amplify-space-xl) 0 0 var(--amplify-space-xl)"
+    >
+      Sign in to your account dude
+    </h3>
+  </ng-template>
+
   <ng-template
     amplifySlot="authenticated"
     let-user="user"
     let-signOut="signOut"
   >
-    <pd-ionic-header [title]="'Welcome, ' + user.username" [onSignOut]="signOut"></pd-ionic-header>
-
     <router-outlet></router-outlet>
 
     <pd-ionic-footer></pd-ionic-footer>

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FooterComponent, HeaderComponent } from '@pd-ionic/shared-ui';
+import { DummyHeaderComponent, FooterComponent, HeaderComponent } from '@pd-ionic/shared-ui';
 import { IonicModule } from '@ionic/angular';
 import { RecaptchaV3Module, ReCaptchaV3Service } from 'ng-recaptcha';
 import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
     AmplifyAuthenticatorModule,
     RecaptchaV3Module,
     CommonModule,
+    DummyHeaderComponent
   ],
   selector: 'pd-ionic-root',
   templateUrl: './app.component.html',
@@ -30,6 +31,7 @@ export class AppComponent {
   title = 'my-blog-app';
 
   private readonly recaptchaV3Service = inject(ReCaptchaV3Service);
+  protected shouldShowPlaceholder: boolean = true;
 
   constructor() {
     Amplify.configure(awsExports);
@@ -39,7 +41,7 @@ export class AppComponent {
 
   services = {
     handleSignUp: async (formData: Record<string, any>) => {
-      let { username, password, email, name, bio } = formData as ISignUpParameters;
+      let { username, password, email, name } = formData as ISignUpParameters;
       return await signUp({
         username,
         password,
@@ -48,7 +50,7 @@ export class AppComponent {
             email,
             name,
             updated_at: new Date().toISOString(),
-            'custom:bio': bio
+            'custom:bio': "new user's bio",
           },
           // optional
           autoSignIn: true // or SignInOptions e.g { authFlowType: "USER_SRP_AUTH" }
@@ -73,6 +75,7 @@ export class AppComponent {
         }
 
         console.log('Sign In Success', signInOutput);
+        this.shouldShowPlaceholder = false;
         return signInOutput;
 
       } catch (e) {
@@ -115,21 +118,10 @@ export class AppComponent {
         placeholder: 'Enter your name',
         isRequired: true
       },
-      bio: {
-        order: 4,
-        label: 'Bio',
-        placeholder: 'Enter your bio'
-      },
       password: {
         order: 5,
         label: 'Password',
         placeholder: 'Enter your password',
-        isRequired: true
-      },
-      confirmPassword: {
-        order: 6,
-        label: 'Confirm Password',
-        placeholder: 'Confirm your password',
         isRequired: true
       }
     }

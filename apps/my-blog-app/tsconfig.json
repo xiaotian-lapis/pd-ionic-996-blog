@@ -11,7 +11,10 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true
   },
-  "files": [],
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
   "include": [],
   "references": [
     {

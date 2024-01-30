@@ -1,0 +1,4 @@
+ion-toolbar {
+  --background: var(--ion-background-color);
+  padding-top: env(safe-area-inset-top);
+}
