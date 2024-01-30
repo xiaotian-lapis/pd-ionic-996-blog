@@ -1,0 +1,38 @@
+{
+  "aws_project_region": "ap-southeast-2",
+  "aws_cloud_logic_custom": [
+    {
+      "name": "AdminQueries",
+      "endpoint": "https://xl0gst6ikl.execute-api.ap-southeast-2.amazonaws.com/staging",
+      "region": "ap-southeast-2"
+    },
+    {
+      "name": "blogsApi",
+      "endpoint": "https://1jg4m8myqg.execute-api.ap-southeast-2.amazonaws.com/staging",
+      "region": "ap-southeast-2"
+    }
+  ],
+  "aws_cognito_identity_pool_id": "ap-southeast-2:e3e5cc9a-00e3-437f-a615-95183786781a",
+  "aws_cognito_region": "ap-southeast-2",
+  "aws_user_pools_id": "ap-southeast-2_mKrkfzikZ",
+  "aws_user_pools_web_client_id": "1dh7kc2s6hnbct9g9snahk5cpf",
+  "oauth": {},
+  "aws_cognito_username_attributes": [],
+  "aws_cognito_social_providers": [],
+  "aws_cognito_signup_attributes": [
+    "EMAIL"
+  ],
+  "aws_cognito_mfa_configuration": "OFF",
+  "aws_cognito_mfa_types": [
+    "SMS"
+  ],
+  "aws_cognito_password_protection_settings": {
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": []
+  },
+  "aws_cognito_verification_mechanisms": [
+    "EMAIL"
+  ],
+  "aws_user_files_s3_bucket": "demo-amplify-blog-app-storage-ac7b22c220323-staging",
+  "aws_user_files_s3_bucket_region": "ap-southeast-2"
+}

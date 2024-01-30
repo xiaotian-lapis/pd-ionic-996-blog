@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { DummyHeaderComponent, FooterComponent, HeaderComponent } from '@pd-ionic/shared-ui';
 import { IonicModule } from '@ionic/angular';
 import { RecaptchaV3Module, ReCaptchaV3Service } from 'ng-recaptcha';
-import { AmplifyAuthenticatorModule, AuthenticatorService } from '@aws-amplify/ui-angular';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 import { Amplify } from 'aws-amplify';
 import awsExports from '../aws-exports';
 import { confirmSignIn, signIn, signUp } from 'aws-amplify/auth';
@@ -41,7 +41,7 @@ export class AppComponent {
 
   services = {
     handleSignUp: async (formData: Record<string, any>) => {
-      let { username, password, email, name } = formData as ISignUpParameters;
+      const { username, password, email, name } = formData as ISignUpParameters;
       return await signUp({
         username,
         password,
