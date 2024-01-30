@@ -1,21 +1,29 @@
 import { IProfile } from '@pd-ionic/shared-models';
-import { Observable, of } from 'rxjs';
+import { from, Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { getCurrentUser, fetchUserAttributes } from 'aws-amplify/auth';
 
 @Injectable()
 export class ProfileService {
-  /**
-   * Get profile from mock data
-   */
+
   getProfile(): Observable<IProfile> {
-    return of({
-      id: '1',
-      name: 'John Doe',
-      email: 'test@google.com',
-      bio: 'I am a software engineer',
-      password: 'password',
-      age: 20,
-      updatedTime: new Date(),
-    });
+    return from(this.fetchCurrentUser());
+  }
+
+  private async fetchCurrentUser() : Promise<IProfile> {
+    try {
+      const { username, userId, signInDetails } = await getCurrentUser();
+      const userAttributes = await fetchUserAttributes();
+      return {
+        id: userId,
+        name: userAttributes.name ? userAttributes.name : '',
+        email: userAttributes.email ? userAttributes.email : '',
+        bio: userAttributes['custom:bio'] ? userAttributes['custom:bio'] : '',
+        updatedTime: userAttributes.updated_at ? new Date(userAttributes.updated_at) : new Date(),
+      };
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+      throw error;
+    }
   }
 }

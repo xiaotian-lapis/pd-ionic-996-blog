@@ -1,7 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { adapter, IBlogState } from './blog.reducer';
-import { IBlog } from './blog.model';
-import { BLOGS_STATE_NAME } from '../shared/constants/state.constant';
+import { BLOGS_STATE_NAME } from '@pd-ionic/shared-constants';
+import { IBlog } from '@pd-ionic/shared-models';
+
 
 export const selectBlogState =
   createFeatureSelector<IBlogState>(BLOGS_STATE_NAME);

@@ -15,3 +15,9 @@ export interface IBlog {
     addr: string;
   };
 }
+
+export interface IBlogApiResponse{
+  success: string;
+  url: string;
+  data: IBlog[];
+}

@@ -1,10 +1,10 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
-import { IBlog } from './blog.model';
-import * as BlogActions from './blog.action';
-import { ViewStatus } from '../shared/constants/status.constant';
-import { equals, isNil } from '../shared/utils/ramda-functions.util';
-import { BlogSortBy, SortOrder } from '../shared/constants/sort.constant';
+import { IBlog } from '@pd-ionic/shared-models';
+import { BlogSortBy, SortOrder, ViewStatus } from '@pd-ionic/shared-constants';
+import { BlogActions, BlogApiActions } from './blog.action';
+import { equals, isNil } from '@pd-ionic/shared-utils';
+
 
 export interface IBlogState extends EntityState<IBlog> {
   error: any;
@@ -75,7 +75,7 @@ export const blogReducer = createReducer(
     console.log(state.entities);
     return adapter.removeOne(id, state);
   }),
-  on(BlogActions.blogsLoadedSuccess, (state, { blogs }) => {
+  on(BlogApiActions.blogsLoadedSuccess, (state, { blogs }) => {
     if (isNil(blogs)) {
       // if incoming blog is null, just set loading state to false.
       console.log('blogsLoadedSuccess reducer triggered, and blog is null');
@@ -88,7 +88,7 @@ export const blogReducer = createReducer(
       viewStatus: ViewStatus.Success,
     });
   }),
-  on(BlogActions.blogsLoadedError, (state, { error }) => {
+  on(BlogApiActions.blogsLoadedError, (state, { error }) => {
     console.log('blogsLoadedError reducer triggered');
     console.log(state.entities);
     return { ...state, error: error.message, viewStatus: ViewStatus.Failure };

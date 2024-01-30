@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { BlogService } from '@pd-ionic/blog-service';
@@ -6,10 +6,16 @@ import { Store } from '@ngrx/store';
 import { selectBlogsViewStatus } from './blog.selector';
 import { ViewStatus } from '@pd-ionic/shared-constants';
 import { equals } from '@pd-ionic/shared-utils';
-import { BlogActions } from './blog.action';
+import { BlogActions, BlogApiActions } from './blog.action';
+import { IBlogState } from './blog.reducer';
 
 @Injectable()
 export class BlogEffects {
+
+  private readonly blogService = inject(BlogService);
+  private readonly store: Store<IBlogState> = inject(Store);
+  private readonly actions$ = inject(Actions);
+
   loadBlogs$ = createEffect(() =>
     this.actions$.pipe(
       ofType(BlogActions.loadBlogs),
@@ -18,23 +24,17 @@ export class BlogEffects {
       mergeMap(([_, viewStatus]) => {
         if (equals(viewStatus, ViewStatus.Reloading)) {
           // already initialized, don't load blog from backend api
-          return of(BlogActions.blogsLoadedSuccess({ blogs: null }));
+          return of(BlogApiActions.blogsLoadedSuccess({ blogs: null }));
         } else {
           // not initialized, load blog from backend api
           return this.blogService.getBlogs().pipe(
-            map((blogs) => BlogActions.blogsLoadedSuccess({ blogs })),
+            map((blogs) => BlogApiActions.blogsLoadedSuccess({ blogs })),
             catchError((error: { message: string }) =>
-              of(BlogActions.blogsLoadedError({ error })),
+              of(BlogApiActions.blogsLoadedError({ error })),
             ),
           );
         }
       }),
     ),
   );
-
-  constructor(
-    private actions$: Actions,
-    private blogService: BlogService,
-    private store: Store,
-  ) {}
 }
