@@ -50,12 +50,6 @@ figure.current-info-container {
   }
 }
 
-ion-toolbar {
-  --background: var(--ion-color-primary);
-  --color: var(--ion-color-primary-contrast);
-  padding-top: env(safe-area-inset-top);
-}
-
 .branding {
   width: 80%;
   max-width: 400px;

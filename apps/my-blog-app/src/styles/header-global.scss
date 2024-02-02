@@ -3,6 +3,12 @@
   background: transparent !important;
 }
 
+.dummy-safety-head {
+  --background: var(--ion-color-primary) !important;
+  --color: var(--ion-color-primary-contrast) !important;
+  padding-top: env(safe-area-inset-top) !important;
+}
+
 .online-indicator-icon {
   display: inline-block;
   align-self: center;
