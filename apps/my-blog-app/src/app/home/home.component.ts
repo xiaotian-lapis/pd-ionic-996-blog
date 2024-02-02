@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogActions, IBlogState, selectAllBlogs, selectBlogsViewStatus } from '@pd-ionic/blog-store';
 import { Observable } from 'rxjs';
@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements ViewWillEnter {
+export class HomeComponent implements OnInit,  ViewWillEnter {
   protected readonly ViewStatus = ViewStatus;
   protected readonly equals = equals;
   protected readonly or = or;
@@ -30,6 +30,10 @@ export class HomeComponent implements ViewWillEnter {
   viewStatus$: Observable<ViewStatus> = this.blogStore.select(
     selectBlogsViewStatus,
   );
+
+  ngOnInit(): void {
+    this.initBlogList();
+  }
 
   ionViewWillEnter() {
     this.initBlogList();

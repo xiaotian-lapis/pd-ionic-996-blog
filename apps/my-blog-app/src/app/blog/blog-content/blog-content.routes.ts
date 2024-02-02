@@ -10,4 +10,8 @@ export const BLOG_CONTENT_ROUTES: Routes = [
     path: ':id',
     component: BlogContentComponent,
   },
+  {
+    path: 'view/:id',
+    component: BlogContentComponent,
+  },
 ];

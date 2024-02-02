@@ -46,7 +46,19 @@ export const appRoutes: Route[] = [
     loadChildren: () =>
       import('./profile/profile.routes').then((m) => m.PROFILE_ROUTES)
   },
-
+  {
+    path: 'blog',
+    loadChildren: () =>
+      import('./blog/blog-content/blog-content.routes').then((m) => m.BLOG_CONTENT_ROUTES),
+    providers: [
+      BlogService,
+      provideState({
+        name: BLOGS_STATE_NAME,
+        reducer: blogReducer
+      }),
+      provideEffects([BlogEffects])
+    ],
+  },
   {
     path: '**',
     redirectTo: 'home'

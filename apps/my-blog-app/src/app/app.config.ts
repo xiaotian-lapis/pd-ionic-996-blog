@@ -6,6 +6,7 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { IonicModule } from '@ionic/angular';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
+import { provideStore } from '@ngrx/store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,6 +18,7 @@ export const appConfig: ApplicationConfig = {
     ),
     provideIonicAngular({}),
     provideAnimations(),
+    provideStore(),
     provideStoreDevtools({ maxAge: 25 }),
     {
       provide: RECAPTCHA_V3_SITE_KEY,
